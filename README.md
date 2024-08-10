@@ -16,7 +16,7 @@ To set up the project locally, follow these steps:
 
 - Node.js (v14.0 or later)
 - npm or yarn package manager
-- OpenAI API Key
+- Gemini API Key
 
 ### Clone the Repository
 
