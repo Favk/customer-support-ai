@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 export async function POST(req) {
-    const apiKey = process.env.GEMINI_API_KEY; // Securely accessing API key
+    const apiKey = process.env.API_KEY; // Securely accessing API key
     const genAI = new GoogleGenerativeAI(apiKey);
 
     try {
@@ -11,7 +11,7 @@ export async function POST(req) {
 
         const systemPrompt = "You are a helpful assistant that provides concise and accurate information. You answer questions directly and provide useful responses based on the context given by the user.";
 
-        const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro" });
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
         const chat = model.startChat({
             systemPrompt: systemPrompt,

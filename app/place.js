@@ -106,6 +106,20 @@ export default function Home() {
             bgcolor="white"
             alignItems="center"
         >
+          {/* Image at the top */}
+          <Box
+              component="img"
+              src="/robot_1.1024x1024.png"  // Ensure this path points to the correct location of your image
+              alt="Support Assistant"
+              sx={{
+                width: '100px',  // Adjust the size as needed
+                height: '100px',
+                borderRadius: '50%',  // Makes the image circular
+                objectFit: 'cover',  // Ensures the image covers the box and maintains aspect ratio
+                mb: 2
+              }}
+          />
+
           <Stack
               direction={'column'}
               spacing={2}
@@ -126,7 +140,7 @@ export default function Home() {
                   <Box
                       bgcolor={
                         message.role === 'mmodel'
-                            ? 'primary.main'
+                            ? '#c6faea'
                             : '#2fe4ac'
                       }
                       color="black"
