@@ -1,6 +1,8 @@
 # Customer Support AI
 
-This Customer Support AI is a chatbot application designed to assist users by providing intelligent responses using OpenAI's GPT model. It is built using Next.js for the frontend, MUI for the UI components, and leverages the OpenAI API for AI-powered responses.
+This Customer Support AI is a chatbot application designed to assist users by providing intelligent responses using OpenAI's GPT model. It is built using Next.js for the frontend, MUI for the UI components, and leverages the OpenAI API for AI-powered responses. This was developed by Favour Kolade in collaboration with Chandni Patel, Temitayo Aderounmu, Ikechuckwu Ofili. 
+We are 
+## Team LAZI
 
 ## Features
 
@@ -16,7 +18,7 @@ To set up the project locally, follow these steps:
 
 - Node.js (v14.0 or later)
 - npm or yarn package manager
-- OpenAI API Key
+- Gemini API Key
 
 ### Clone the Repository
 
