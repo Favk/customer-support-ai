@@ -1,6 +1,6 @@
 # Customer Support AI
 
-Customer Support AI is a chatbot application designed to assist users by providing intelligent responses using OpenAI's GPT model. It is built using Next.js for the frontend, MUI for the UI components, and leverages the OpenAI API for AI-powered responses.
+This Customer Support AI is a chatbot application designed to assist users by providing intelligent responses using OpenAI's GPT model. It is built using Next.js for the frontend, MUI for the UI components, and leverages the OpenAI API for AI-powered responses.
 
 ## Features
 
