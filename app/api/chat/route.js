@@ -1,41 +1,36 @@
-import {NextResponse} from 'next/server' // Import NextResponse from Next.js for handling responses
-import OpenAI from 'openai' // Import OpenAI library for interacting with the OpenAI API
+import { NextResponse } from 'next/server';
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-// System prompt for the AI, providing guidelines on how to respond to users
-const systemPrompt = 'Hello at your service'// Use your own system prompt here
-
-// POST function to handle incoming requests
 export async function POST(req) {
-  const openai = new OpenAI() // Create a new instance of the OpenAI client
-  const data = await req.json() // Parse the JSON body of the incoming request
+    const apiKey = process.env.GEMINI_API_KEY; // Securely accessing API key
+    const genAI = new GoogleGenerativeAI(apiKey);
 
-  // Create a chat completion request to the OpenAI API
-  const completion = await openai.chat.completions.create({
-    messages: [{role: 'system', content: systemPrompt}, ...data], // Include the system prompt and user messages
-    model: 'gpt-3.5-turbo', // Specify the model to use
-    stream: true, // Enable streaming responses
-  })
+    try {
+        const data = await req.json();
+        const userMessage = data.message || "Hello, how can I assist you today?";
 
-  // Create a ReadableStream to handle the streaming response
-  const stream = new ReadableStream({
-    async start(controller) {
-      const encoder = new TextEncoder() // Create a TextEncoder to convert strings to Uint8Array
-      try {
-        // Iterate over the streamed chunks of the response
-        for await (const chunk of completion) {
-          const content = chunk.choices[0]?.delta?.content // Extract the content from the chunk
-          if (content) {
-            const text = encoder.encode(content) // Encode the content to Uint8Array
-            controller.enqueue(text) // Enqueue the encoded text to the stream
-          }
-        }
-      } catch (err) {
-        controller.error(err) // Handle any errors that occur during streaming
-      } finally {
-        controller.close() // Close the stream when done
-      }
-    },
-  })
+        const systemPrompt = "You are a helpful assistant that provides concise and accurate information. You answer questions directly and provide useful responses based on the context given by the user.";
 
-  return new NextResponse(stream) // Return the stream as the response
+        const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro" });
+
+        const chat = model.startChat({
+            systemPrompt: systemPrompt,
+            generationConfig: {
+                maxOutputTokens: 100,
+            },
+        });
+
+        const result = await chat.sendMessage(userMessage);
+        const response = await result.response.text();
+
+        return new NextResponse(response, {
+            headers: {
+                'Content-Type': 'text/plain; charset=utf-8',
+            },
+        });
+
+    } catch (error) {
+        console.error('Error with Gemini API:', error);
+        return new NextResponse('Internal Server Error', { status: 500 });
+    }
 }

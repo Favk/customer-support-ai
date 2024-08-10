@@ -17,7 +17,7 @@ export default function Home() {
     setMessages((messages) => [
       ...messages,
       { role: 'user', content: message },  // Add the user's message to the chat
-      { role: 'assistant', content: 'I am doing great' },  // Add a placeholder for the assistant's response
+      { role: 'assistant', content: '' },  // Add a placeholder for the assistant's response
     ])
   
     // Send the message to the server
