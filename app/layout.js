@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "AI Chatbot",
-  description: "Made by Favour Kolade, Ikechukwu Ofili, Temitayo Aderounmou, Chadni Patel",
+  description: "Made by Favour Kolade, Ikechukwu Ofili, Temitayo Aderounmou, Chandni Patel",
 };
 
 export default function RootLayout({ children }) {
