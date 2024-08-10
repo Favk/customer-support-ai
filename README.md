@@ -1,3 +1,30 @@
+# Customer Support AI
+
+Customer Support AI is a chatbot application designed to assist users by providing intelligent responses using OpenAI's GPT model. It is built using Next.js for the frontend, MUI for the UI components, and leverages the OpenAI API for AI-powered responses.
+
+## Features
+
+- **Level 1**: Basic chatbot with hard-coded responses.
+- **Level 2**: AI-powered chatbot responding intelligently using the OpenAI GPT-3.5 Turbo model.
+- **Level 3**: Deployment of the application on AWS EC2.
+
+## Installation
+
+To set up the project locally, follow these steps:
+
+### Prerequisites
+
+- Node.js (v14.0 or later)
+- npm or yarn package manager
+- OpenAI API Key
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/customer-support-ai.git
+cd customer-support-ai
+```
+
 ## Getting Started
 
 First, run the development server:
